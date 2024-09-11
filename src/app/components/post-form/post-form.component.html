@@ -1,0 +1,12 @@
+<form class="row my-3 gy-3">
+  <div class="col-12">
+    <input type="text" [(ngModel)]="model.title" id="userName" #userName
+           name="title" class="form-control" placeholder="Title">
+  </div>
+  <div class="col-12">
+    <textarea name="description" rows="5" placeholder="description" [(ngModel)]="model.description" class="form-control"></textarea>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary" (click)="handleSubmit()">Add User</button>
+  </div>
+</form>
