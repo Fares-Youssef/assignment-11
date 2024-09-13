@@ -1,4 +1,4 @@
-<form class="row my-3 gy-3">
+<form class="row my-3 gy-3" *ngIf="editedData == null">
   <div class="col-12">
     <input type="text" [(ngModel)]="model.title" id="userName" #userName
            name="title" class="form-control" placeholder="Title">
@@ -8,5 +8,18 @@
   </div>
   <div class="col-12">
     <button class="btn btn-primary" (click)="handleSubmit()">Add User</button>
+  </div>
+</form>
+
+<form class="row my-3 gy-3" *ngIf="editedData != null">
+  <div class="col-12">
+    <input type="text" [(ngModel)]="editedData.title" id="userName2" #userName2
+           name="title" class="form-control" placeholder="Title">
+  </div>
+  <div class="col-12">
+    <textarea name="description2" rows="5" placeholder="description" [(ngModel)]="editedData.description" class="form-control"></textarea>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-warning" (click)="handleEdit()">Edit User</button>
   </div>
 </form>

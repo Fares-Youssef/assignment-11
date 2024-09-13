@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, Output, EventEmitter, Input} from '@angular/core';
 
 @Component({
   selector: 'app-post-form',
@@ -6,24 +6,24 @@ import {Component, EventEmitter, Output} from '@angular/core';
   styleUrl: './post-form.component.css'
 })
 export class PostFormComponent {
+  @Input() editedData :any;
   @Output() userData = new EventEmitter<any>();
-
+  @Output() userDataUpdate = new EventEmitter<any>();
   model ={
     title : '',
     description:''
   }
-
   handleSubmit(){
-    // console.log(this.model)
-
     let modelData ={
       title : this.model.title,
       description : this.model.description
     }
     this.model.title =''
     this.model.description =''
-
     this.userData.emit(modelData)
+  }
+  handleEdit(){
+    this.userDataUpdate.emit(this.editedData)
   }
 
 

@@ -1,8 +1,15 @@
-<app-post-form (userData)="handleUserData($event)"></app-post-form>
+<app-post-form (userData)="handleUserData($event)" [editedData]="selectedEditItem" (userDataUpdate)="handleUserDataUpdate($event)"></app-post-form>
 <hr>
-<div class="row">
+<input type="search" [(ngModel)]="searchValue" (keyup)="handlesearch()" class="form-control mb-3" placeholder="search....." >
+<div class="row" *ngIf=" searchValue == ''">
   <div class="col-4 mb-3" *ngFor="let item of posts let i = index">
-    <app-card [data]="item" [index]="i" (delete)="removeItem($event)"></app-card>
+    <app-card [data]="item" [index]="i" (delete)="removeItem($event)" (edit)="editItem($event)"></app-card>
+  </div>
+</div>
+
+<div class="row" *ngIf=" searchValue != ''">
+  <div class="col-4 mb-3" *ngFor="let item of postsSearch let i = index">
+    <app-card [data]="item" [index]="i" (delete)="removeItem($event)" (edit)="editItem($event)"></app-card>
   </div>
 </div>
 
